@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+	<title>StrCounter</title>
+	<meta name='author' content='>_<'>
+
+	<meta name='description' content='
+' >
+
+</head>
+<body>
+
+<script type='module'>
+	import init, { mystia as compile } from "https://kajizukataichi.github.io/mystia/wasm/web/mystia_wasm.js";
+import { mystia } from "https://kajizukataichi.github.io/mystia/runtime/web.mjs";
+import { Raido_oUtils } from "/Raido_oUtils/Raido_oUtils.mjs?d=1";
+
+let pass = 'main.ms'
+if (location.hostname === 'localhost') { pass += '?u='+String(Date.now()) }
+fetch(pass)
+	.then(res => res.text())
+	.then(async code => {
+		console.log(await mystia(code, {Raido_oUtils: new Raido_oUtils()}))
+	})
+</script>
+
+</body>
+</html>
