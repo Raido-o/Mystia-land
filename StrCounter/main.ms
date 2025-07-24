@@ -1,20 +1,16 @@
-type Elm = int;
-
 load concat(a: str, b: str): str;
 load to_str(n: num): str;
 load strlen(s: str): int;
-load new_elm(tag: str, parent: Elm): Elm;
-load upd_elm(id: Elm, prop: str, content: str): void;
-load evt_elm(id: Elm, name: str, func: str): void;
-load Raido_oUtils::{
-	prp_elm(id: Elm, prop: str): str
-};
+load new_elm(tag: str, parent: int): int;
+load upd_elm(id: int, prop: str, content: str): void;
+load evt_elm(id: int, name: str, func: str): void;
+load Raido_oUtils.prp_elm(id: int, prop: str): str;
 
 pub let model = @{
 	title: "StrCounter",
 	count: 0,
 	layout: @{
-		panel: null:Elm
+		panel: -1
 	}
 };
 
@@ -23,7 +19,7 @@ let view() = {
 	upd_elm(model.layout.panel, "innerHTML", formatted)
 };
 
-let frame = new_elm("div", null: Elm);
+let frame = new_elm("div", -1);
 frame.upd_elm("style", "margin: 10rem");
 frame.evt_elm("keydown", "inc_key");
 
